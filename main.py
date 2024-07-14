@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Sat May 12 16:49:49 2018
 
@@ -97,7 +96,6 @@ def PrepareDataset(speed_matrix,
         Delta = np.expand_dims(Delta, axis=1)
         dataset_agger = np.concatenate((speed_sequences, X_last_obsv, Mask, Delta), axis=1)
 
-
     train_index = int(np.floor(sample_size * train_propotion))
     valid_index = int(np.floor(sample_size * (train_propotion + valid_propotion)))
 
@@ -129,7 +127,7 @@ def PrepareDataset(speed_matrix,
     return train_dataloader, valid_dataloader, test_dataloader, max_speed, X_mean
 
 
-def Train_Model(model, train_dataloader, valid_dataloader, num_epochs=1, patience=10, min_delta=0.00001,
+def Train_Model(model, train_dataloader, valid_dataloader, num_epochs=10, patience=10, min_delta=0.00001,
                 batch_size=64):
     print('Model Structure: ', model)
     print('Start Training ... ')

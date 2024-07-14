@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Sat May 12 16:48:54 2018
 
@@ -126,21 +125,21 @@ class GRUD(nn.Module):
         delta_x = torch.exp(-torch.max(self.zeros, self.gamma_x_l(delta)))  # TODO Figure 3 in GRU-D paper
         delta_h = torch.exp(-torch.max(self.zeros, self.gamma_h_l(delta)))
 
-        print(f"{delta_x.detach().numpy().shape = }")
-        print(f"{delta_h.detach().numpy().shape = }")
+        # print(f"{delta_x.detach().numpy().shape = }")
+        # print(f"{delta_h.detach().numpy().shape = }")
         # print(f"{x_mean = }"
 
         deltas_x.append(pd.DataFrame(delta_x.detach().numpy()))
-        #pd.concat(deltas_x).to_csv("decay_x.csv", index=False)
+        pd.concat(deltas_x).to_csv("decay_x.csv", index=False)
 
         deltas_h.append(pd.DataFrame(delta_h.detach().numpy()))
-        #pd.concat(deltas_h).to_csv("decay_h.csv", index=False)
+        pd.concat(deltas_h).to_csv("decay_h.csv", index=False)
 
         input_x.append(pd.DataFrame(x.detach().numpy()))
-        #pd.concat(input_x).to_csv("input_x.csv", index=False)
+        pd.concat(input_x).to_csv("input_x.csv", index=False)
 
         mean_x.append(pd.DataFrame(x_mean.detach().numpy()))
-        #pd.concat(mean_x).to_csv("mean_x.csv", index=False)
+        pd.concat(mean_x).to_csv("mean_x.csv", index=False)
 
         # print(delta_x)  # TODO store deltas and describe more
 
